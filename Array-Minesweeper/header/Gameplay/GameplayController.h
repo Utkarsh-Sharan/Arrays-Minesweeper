@@ -2,8 +2,16 @@
 
 namespace Gameplay
 {
-	class GameplayService
+	class GameplayController
 	{
+	public:
+		GameplayController();
+		~GameplayController();
 
+		void initialize();
+		void update();
+		void render();
+
+		void reset();
 	};
 }
