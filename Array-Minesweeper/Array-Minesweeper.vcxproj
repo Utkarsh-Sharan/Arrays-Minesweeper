@@ -170,6 +170,9 @@
     <ClInclude Include="header\UI\UIService.h" />
     <ClInclude Include="header\UI\Instructions\InstructionsScreenUIController.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="x64\Debug\sfml-graphics-d-2.dll" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
