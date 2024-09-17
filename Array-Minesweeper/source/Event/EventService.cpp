@@ -19,8 +19,8 @@ namespace Event
 
     void EventService::update()
     {
-        updateButtonsState(left_mouse_button_state);
-        updateButtonsState(right_mouse_button_state);
+        updateButtonsState(left_mouse_button_state, sf::Mouse::Left);
+        updateButtonsState(right_mouse_button_state, sf::Mouse::Right);
     }
 
     void EventService::processEvents()
@@ -36,15 +36,16 @@ namespace Event
         }
     }
 
-    void EventService::updateButtonsState(ButtonState& button_state)
+    void EventService::updateButtonsState(ButtonState& button_state, sf::Mouse::Button button_type)
     {
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        if (sf::Mouse::isButtonPressed(button_type))
         {
             switch (button_state)
             {
             case ButtonState::RELEASED:
                 button_state = ButtonState::PRESSED;
                 break;
+
             case ButtonState::PRESSED:
                 button_state = ButtonState::HELD;
                 break;

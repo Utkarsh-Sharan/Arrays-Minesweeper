@@ -20,6 +20,8 @@ namespace Gameplay
             CellController* cell_controller;
 
             void initializeButtonImage(float width, float height);
+            void registerButtonCallback();
+            void cellButtonCallback(UI::UIElement::ButtonType button_type);
 
         public:
             CellView(CellController* controller);

@@ -29,6 +29,7 @@ namespace Gameplay
             void render();
 
             void openCell();
+            void flagCell();
 
             CellState getCellState();
             void setCellState(CellState state);

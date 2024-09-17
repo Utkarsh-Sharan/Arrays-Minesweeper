@@ -48,6 +48,22 @@ namespace Gameplay
 			}
 		}
 
+		void CellController::flagCell()
+		{
+			switch (cell_model->getCellState())
+			{
+			case CellState::FLAGGED:
+				setCellState(CellState::HIDDEN);
+				break;
+
+			case CellState::HIDDEN:
+				setCellState(CellState::FLAGGED);
+				break;
+			}
+
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+		}
+
 		CellState CellController::getCellState()
 		{
 			return cell_model->getCellState();
