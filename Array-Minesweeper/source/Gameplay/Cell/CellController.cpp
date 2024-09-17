@@ -6,10 +6,10 @@ namespace Gameplay
 {
 	namespace Cell
 	{
-		CellController::CellController()
+		CellController::CellController(int index)
 		{
 			cell_view = new CellView(this);
-			cell_model = new CellModel();
+			cell_model = new CellModel(index);
 		}
 
 		CellController::~CellController()
@@ -52,6 +52,11 @@ namespace Gameplay
 		void CellController::setCellValue(CellValue value)
 		{
 			cell_model->setCellValue(value);
+		}
+
+		int CellController::getCellIndex()
+		{
+			return cell_model->getCellIndex();
 		}
 
 		void CellController::reset()
