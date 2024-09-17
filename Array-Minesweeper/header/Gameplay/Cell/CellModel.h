@@ -1,5 +1,7 @@
 #pragma once
 
+#include <SFML/Graphics.hpp>
+
 namespace Gameplay
 {
 	namespace Cell
@@ -28,13 +30,13 @@ namespace Gameplay
 		class CellModel
 		{
         private:
-            int cell_index = 0;
+            sf::Vector2i position;
 
             CellState cell_state;
             CellValue cell_value;
 
         public:
-            CellModel(int index);
+            CellModel(sf::Vector2i position);
             ~CellModel();
 
             void initialize();
@@ -46,7 +48,7 @@ namespace Gameplay
             CellValue getCellValue();
             void setCellValue(CellValue value);
 
-            int getCellIndex();
+            sf::Vector2i getCellIndex();
 
             void reset();
 		};
