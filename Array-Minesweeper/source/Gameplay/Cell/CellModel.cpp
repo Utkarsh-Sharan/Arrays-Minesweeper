@@ -6,7 +6,7 @@ namespace Gameplay
 	{
 		CellModel::CellModel()
 		{
-
+			reset();
 		}
 
 		CellModel::~CellModel() = default;
