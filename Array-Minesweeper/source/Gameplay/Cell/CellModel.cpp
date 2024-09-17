@@ -42,7 +42,7 @@ namespace Gameplay
 			cell_value = value;
 		}
 
-		sf::Vector2i CellModel::getCellIndex()
+		sf::Vector2i CellModel::getCellPosition()
 		{
 			return position;
 		}
