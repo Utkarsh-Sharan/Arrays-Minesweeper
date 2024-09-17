@@ -21,11 +21,6 @@ namespace Gameplay
 
 		}
 
-		void CellModel::render()
-		{
-
-		}
-
 		CellState CellModel::getCellState()
 		{
 			return cell_state;
