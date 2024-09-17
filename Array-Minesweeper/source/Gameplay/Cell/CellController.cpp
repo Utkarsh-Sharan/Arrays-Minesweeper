@@ -2,10 +2,15 @@
 #include "Gameplay/Cell/CellView.h"
 #include "Gameplay/Cell/CellModel.h"
 
+#include "Global/ServiceLocator.h"
+
 namespace Gameplay
 {
 	namespace Cell
 	{
+		using namespace Global;
+		using namespace Sound;
+
 		CellController::CellController(sf::Vector2i position)
 		{
 			cell_view = new CellView(this);
@@ -32,6 +37,31 @@ namespace Gameplay
 		void CellController::render()
 		{
 			cell_view->render();
+		}
+
+		void CellController::openCell()
+		{
+			if (getCellState() != CellState::FLAGGED)
+			{
+				setCellState(CellState::OPEN);
+				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+			}
+		}
+
+		void CellController::flagCell()
+		{
+			switch (cell_model->getCellState())
+			{
+			case CellState::FLAGGED:
+				setCellState(CellState::HIDDEN);
+				break;
+
+			case CellState::HIDDEN:
+				setCellState(CellState::FLAGGED);
+				break;
+			}
+
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
 		}
 
 		CellState CellController::getCellState()
