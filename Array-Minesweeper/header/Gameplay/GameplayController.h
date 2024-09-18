@@ -2,11 +2,15 @@
 
 namespace Gameplay
 {
+	class BoardController;
+
 	class GameplayController
 	{
 	private:
 		const float max_duration = 60.f;
 		float remaining_time;
+
+		Board::BoardController* board_controller;
 
 		void updateRemainingTime();
 
@@ -19,6 +23,7 @@ namespace Gameplay
 		void render();
 
 		float getRemainingTime();
+		int getMinesCount();
 
 		void reset();
 	};
