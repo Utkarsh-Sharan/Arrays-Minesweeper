@@ -16,8 +16,8 @@ namespace Global
         Graphics::GraphicService* graphic_service;
         Sound::SoundService* sound_service;
         UI::UIService* ui_service;
-        Gameplay::Board::BoardService* board_service;
-        Gameplay::GameplayService* gameplay_service;
+        ::Gameplay::Board::BoardService* board_service;
+        ::Gameplay::GameplayService* gameplay_service;
         Time::TimeService* time_service;
 
         ServiceLocator();
@@ -37,8 +37,8 @@ namespace Global
         Graphics::GraphicService* getGraphicService();
         Sound::SoundService* getSoundService();
         UI::UIService* getUIService();
-        Gameplay::Board::BoardService* getBoardService();
-        Gameplay::GameplayService* getGameplayService();
+        ::Gameplay::Board::BoardService* getBoardService();
+        ::Gameplay::GameplayService* getGameplayService();
         Time::TimeService* getTimeService();
 
         void deleteServiceLocator();

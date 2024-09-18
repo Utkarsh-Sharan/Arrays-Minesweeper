@@ -1,6 +1,7 @@
 #include "UI/Gameplay/GameplayUIController.h"
 
 #include "Global/ServiceLocator.h"
+#include "Global/Config.h"
 #include <iomanip>
 #include <sstream>
 
@@ -10,10 +11,12 @@ namespace UI
 	{
 		using namespace UIElement;
 		using namespace Global;
+		using namespace Sound;
 
 		GameplayUIController::GameplayUIController()
 		{
 			createTexts();
+			createButton();
 		}
 
 		GameplayUIController::~GameplayUIController()
@@ -27,8 +30,14 @@ namespace UI
 			time_text = new TextView();
 		}
 
+		void GameplayUIController::createButton()
+		{
+			restart_button = new ButtonView();
+		}
+
 		void GameplayUIController::initialize()
 		{
+			initializeButton();
 			initializeTexts();
 		}
 
@@ -48,8 +57,30 @@ namespace UI
 			time_text->initialize("000", sf::Vector2f(time_text_left_offset, time_text_top_offset), FontType::ROBOTO, font_size, text_color);
 		}
 
+		void GameplayUIController::initializeButton()
+		{
+			restart_button->initialize("Restart Button",
+				Config::restart_button_texture_path,
+				button_width, button_height,
+				sf::Vector2f(restart_button_left_offset, restart_button_top_offset));
+
+			registerButtonCallback();
+		}
+
+		void GameplayUIController::registerButtonCallback()
+		{
+			restart_button->registerCallbackFuntion(std::bind(&GameplayUIController::restartButtonCallback, this));
+		}
+
+		void GameplayUIController::restartButtonCallback()
+		{
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+			ServiceLocator::getInstance()->getGameplayService()->startGame();
+		}
+
 		void GameplayUIController::update()
 		{
+			restart_button->update();
 			updateMineText();
 			updateTimeText();
 		}
@@ -80,12 +111,16 @@ namespace UI
 
 		void GameplayUIController::render()
 		{
+			restart_button->render();
+
 			mine_text->render();
 			time_text->render();
 		}
 
 		void GameplayUIController::show()
 		{
+			restart_button->show();
+
 			mine_text->show();
 			time_text->show();
 		}
@@ -94,9 +129,11 @@ namespace UI
 		{
 			mine_text = nullptr;
 			time_text = nullptr;
+			restart_button = nullptr;
 
 			delete (mine_text);
 			delete (time_text);
+			delete (restart_button);
 		}
 	}
 }

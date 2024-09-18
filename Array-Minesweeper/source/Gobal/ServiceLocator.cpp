@@ -4,13 +4,14 @@
 
 namespace Global
 {
+	namespace GB = ::Gameplay::Board;
+	namespace GP = ::Gameplay;
+
 	using namespace Main;
 	using namespace Graphics;
 	using namespace Event;
 	using namespace Sound;
 	using namespace UI;
-	using namespace Gameplay::Board;
-	using namespace Gameplay;
 	using namespace Time;
 
 	ServiceLocator::ServiceLocator()
@@ -34,8 +35,8 @@ namespace Global
 		graphic_service = new GraphicService();
 		sound_service = new SoundService();
 		ui_service = new UIService();
-		board_service = new BoardService();
-		gameplay_service = new GameplayService();
+		board_service = new GB::BoardService();
+		gameplay_service = new GP::GameplayService();
 		time_service = new TimeService();
 	}
 
@@ -103,9 +104,9 @@ namespace Global
 
 	UIService* ServiceLocator::getUIService() { return ui_service; }
 
-	BoardService* ServiceLocator::getBoardService() { return board_service; }
+	GB::BoardService* ServiceLocator::getBoardService() { return board_service; }
 
-	GameplayService* ServiceLocator::getGameplayService() { return gameplay_service; }
+	GP::GameplayService* ServiceLocator::getGameplayService() { return gameplay_service; }
 
 	TimeService* ServiceLocator::getTimeService() { return time_service; }
 
