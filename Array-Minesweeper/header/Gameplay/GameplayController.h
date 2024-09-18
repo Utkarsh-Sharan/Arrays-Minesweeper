@@ -5,7 +5,7 @@ namespace Gameplay
 	class GameplayController
 	{
 	private:
-		const float max_duration;
+		const float max_duration = 60.f;
 		float remaining_time;
 
 		void updateRemainingTime();
