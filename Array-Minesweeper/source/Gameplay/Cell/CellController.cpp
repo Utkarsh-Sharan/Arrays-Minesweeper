@@ -39,13 +39,16 @@ namespace Gameplay
 			cell_view->render();
 		}
 
+		bool CellController::canOpenCell()
+		{
+			return getCellState() != CellState::FLAGGED && getCellState() != CellState::OPEN;
+		}
+
 		void CellController::openCell()
 		{
-			if (getCellState() != CellState::FLAGGED)
-			{
-				setCellState(CellState::OPEN);
-				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
-			}
+			setCellState(CellState::OPEN);
+
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
 		}
 
 		void CellController::flagCell()

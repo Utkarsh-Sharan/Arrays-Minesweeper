@@ -28,6 +28,7 @@ namespace Gameplay
             void update();
             void render();
 
+            bool canOpenCell();
             void openCell();
             void flagCell();
 

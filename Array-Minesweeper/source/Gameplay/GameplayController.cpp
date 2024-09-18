@@ -47,9 +47,4 @@ namespace Gameplay
 	{
 		return remaining_time;
 	}
-
-	int GameplayController::getMinesCount()
-	{
-		return board_controller->getMinesCount();
-	}
 }

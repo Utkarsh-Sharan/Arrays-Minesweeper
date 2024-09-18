@@ -1,8 +1,11 @@
 #include "Gameplay/GameplayService.h"
 #include "Gameplay/GameplayController.h"
+#include "Global/ServiceLocator.h"
 
 namespace Gameplay
 {
+	using namespace Global;
+
 	GameplayService::GameplayService()
 	{
 		gameplay_controller = new GameplayController();
@@ -42,6 +45,6 @@ namespace Gameplay
 
 	int GameplayService::getMinesCount()
 	{
-		return gameplay_controller->getMinesCount();
+		return ServiceLocator::getInstance()->getBoardService()->getMinesCount();
 	}
 }
