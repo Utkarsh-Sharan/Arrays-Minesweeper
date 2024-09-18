@@ -1,11 +1,16 @@
 #include "Gameplay/Board/BoardController.h"
 #include "Gameplay/Board/BoardView.h"
 
+#include "Gameplay/Cell/CellModel.h"
+#include "Global/ServiceLocator.h"
+
 namespace Gameplay
 {
 	namespace Board
 	{
 		using namespace Cell;
+		using namespace Global;
+		using namespace Sound;
 
 		BoardController::BoardController()
 		{
@@ -24,7 +29,7 @@ namespace Gameplay
 			{
 				for (int b = 0; b < number_of_columns; b++)
 				{
-					board[a][b] = new CellController(sf::Vector2i(a, b));
+					board[a][b] = new Cell::CellController(sf::Vector2i(a, b));
 				}
 			}
 		}
@@ -75,9 +80,49 @@ namespace Gameplay
 			}
 		}
 
+		void BoardController::processCellInput(Cell::CellController* cell_controller, UI::UIElement::ButtonType button_type)
+		{
+			switch (button_type)
+			{
+			case UI::UIElement::ButtonType::LEFT_MOUSE_BUTTON:
+				openCell(cell_controller->getCellPosition());
+				break;
+
+			case UI::UIElement::ButtonType::RIGHT_MOUSE_BUTTON:
+				flagCell(cell_controller->getCellPosition());
+				break;
+			}
+		}
+
+		void BoardController::openCell(sf::Vector2i cell_position)
+		{
+			if (board[cell_position.x][cell_position.y]->canOpenCell())
+			{
+				board[cell_position.x][cell_position.y]->openCell();
+			}
+		}
+
+		void BoardController::flagCell(sf::Vector2i cell_position)
+		{
+			switch (board[cell_position.x][cell_position.y]->getCellState())
+			{
+			case CellState::FLAGGED:
+				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+				flagged_cells--; //Used to update Gameplay UI
+				break;
+
+			case CellState::HIDDEN:
+				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+				flagged_cells++; //Used to update Gameplay UI
+				break;
+			}
+
+			board[cell_position.x][cell_position.y]->flagCell();
+		}
+
 		int BoardController::getMinesCount()
 		{
-			return mines_count;
+			return mines_count - flagged_cells;
 		}
 
 		void BoardController::destroy()
@@ -104,6 +149,7 @@ namespace Gameplay
 
 		void BoardController::reset()
 		{
+			flagged_cells = 0;
 			resetBoard();
 		}
 

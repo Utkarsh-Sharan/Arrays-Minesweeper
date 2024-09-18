@@ -3,6 +3,7 @@
 #include "Gameplay/Cell/CellModel.h"
 
 #include "Global/Config.h"
+#include "Global/ServiceLocator.h"
 
 namespace Gameplay
 {
@@ -38,16 +39,7 @@ namespace Gameplay
 
         void CellView::cellButtonCallback(ButtonType button_type)
         {
-            switch (button_type)
-            {
-            case ButtonType::LEFT_MOUSE_BUTTON:
-                cell_controller->openCell();
-                break;
-
-            case ButtonType::RIGHT_MOUSE_BUTTON:
-                cell_controller->flagCell();
-                break;
-            }
+            ServiceLocator::getInstance()->getBoardService()->processCellInput(cell_controller, button_type);
         }
 
         sf::Vector2f CellView::getCellScreenPosition(float width, float height)
