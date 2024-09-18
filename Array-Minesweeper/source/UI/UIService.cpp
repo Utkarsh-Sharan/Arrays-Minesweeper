@@ -9,7 +9,7 @@ namespace UI
 	using namespace SplashScreen;
 	using namespace Credits;
 	using namespace Instructions;
-	using namespace Gameplay;
+	using namespace GameplayUI;
 	using namespace UIElement;
 	using namespace Interface;
 

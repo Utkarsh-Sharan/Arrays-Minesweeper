@@ -7,7 +7,7 @@
 
 namespace UI
 {
-	namespace Gameplay
+	namespace GameplayUI
 	{
 		using namespace UIElement;
 		using namespace Global;

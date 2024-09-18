@@ -7,7 +7,7 @@
 
 namespace UI
 {
-	namespace Gameplay
+	namespace GameplayUI
 	{
 		class GameplayUIController : public Interface::IUIController
 		{

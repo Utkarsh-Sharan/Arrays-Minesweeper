@@ -15,7 +15,7 @@ namespace UI
 		MainMenu::MainMenuUIController* main_menu_controller;
 		Credits::CreditsScreenUIController* credit_screen_controller;
 		Instructions::InstructionsScreenUIController* instructions_screen_controller;
-		Gameplay::GameplayUIController* gameplay_ui_controller;
+		GameplayUI::GameplayUIController* gameplay_ui_controller;
 
 		void createControllers();
 		void initializeControllers();
