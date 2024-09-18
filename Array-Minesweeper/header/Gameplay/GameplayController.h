@@ -1,9 +1,9 @@
 #pragma once
 
+#include "Gameplay/Board/BoardController.h"
+
 namespace Gameplay
 {
-	class BoardController;
-
 	class GameplayController
 	{
 	private:
