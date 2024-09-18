@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Gameplay/Board/BoardController.h"
+
 namespace Gameplay
 {
 	class GameplayController
@@ -7,6 +9,8 @@ namespace Gameplay
 	private:
 		const float max_duration = 60.f;
 		float remaining_time;
+
+		Board::BoardController* board_controller;
 
 		void updateRemainingTime();
 
@@ -19,6 +23,7 @@ namespace Gameplay
 		void render();
 
 		float getRemainingTime();
+		int getMinesCount();
 
 		void reset();
 	};

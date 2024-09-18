@@ -22,6 +22,9 @@ namespace Gameplay
 			void initialize();
 			void update();
 			void render();
+
+			int getMinesCount();
+
 			void reset();
 
 		private:
@@ -30,6 +33,7 @@ namespace Gameplay
 
 			void createBoard();
 			void initializeCells();
+
 			void destroy();
 			void deleteBoard();
 			void resetBoard();

@@ -5,6 +5,7 @@ namespace Gameplay
 {
 	using namespace Global;
 	using namespace Time;
+	using namespace Board;
 
 	GameplayController::GameplayController()
 	{
@@ -45,5 +46,10 @@ namespace Gameplay
 	float GameplayController::getRemainingTime()
 	{
 		return remaining_time;
+	}
+
+	int GameplayController::getMinesCount()
+	{
+		return board_controller->getMinesCount();
 	}
 }
