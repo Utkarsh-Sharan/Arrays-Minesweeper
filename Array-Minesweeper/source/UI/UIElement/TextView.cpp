@@ -9,6 +9,7 @@ namespace UI
 
 		sf::Font TextView::font_bubble_bobble;
 		sf::Font TextView::font_DS_DIGIB;
+		sf::Font TextView::font_ROBOTO;
 
 		TextView::TextView() = default;
 
@@ -49,6 +50,7 @@ namespace UI
 		{
 			font_bubble_bobble.loadFromFile(Config::bubble_bobble_font_path);
 			font_DS_DIGIB.loadFromFile(Config::DS_DIGIB_font_path);
+			font_DS_DIGIB.loadFromFile(Config::roboto_font_path);
 		}
 
 		void TextView::setText(sf::String text_value)
@@ -63,8 +65,13 @@ namespace UI
 			case FontType::BUBBLE_BOBBLE:
 				text.setFont(font_bubble_bobble);
 				break;
+
 			case FontType::DS_DIGIB:
 				text.setFont(font_DS_DIGIB);
+				break;
+
+			case FontType::ROBOTO:
+				text.setFont(font_ROBOTO);
 				break;
 			}
 		}

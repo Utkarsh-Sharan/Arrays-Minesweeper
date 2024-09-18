@@ -90,6 +90,12 @@
     <ClCompile Include="source\Gameplay\Cell\CellView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\UI\Gameplay\GameplayUIController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Time\TimeService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\Global\ServiceLocator.h">
@@ -167,8 +173,63 @@
     <ClInclude Include="header\Gameplay\Cell\CellView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="header\UI\Gameplay\GameplayUIController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\Time\TimeService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="x64\Debug\sfml-graphics-d-2.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\bubbleBobble.ttf" />
+    <Font Include="assets\fonts\DS_DIGIB.TTF" />
+    <Font Include="assets\fonts\roboto.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\sounds\background_music.mp3" />
+    <Media Include="assets\sounds\button_click_sound.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="assets\sounds\explosion_sound.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="assets\sounds\flag_sound.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="assets\sounds\game_won_sound.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\textures\board.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\cells.jpeg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\instructions_button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\menu_button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\minesweeper_bg.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\outscal_logo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\play_button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\quit_button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\restart_button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
