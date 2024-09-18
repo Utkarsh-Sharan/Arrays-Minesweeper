@@ -8,9 +8,9 @@ namespace Global
 	using namespace Graphics;
 	using namespace Event;
 	using namespace Sound;
-	using namespace UI;
 	using namespace Gameplay::Board;
 	using namespace Gameplay;
+	using namespace UI;
 	using namespace Time;
 
 	ServiceLocator::ServiceLocator()
