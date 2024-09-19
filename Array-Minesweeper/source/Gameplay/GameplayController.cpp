@@ -32,6 +32,11 @@ namespace Gameplay
 		remaining_time -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 	}
 
+	void GameplayController::beginGameOverTimer() 
+	{ 
+		remaining_time = game_over_time;
+	}
+
 	void GameplayController::endGame(GameResult result)
 	{
 		// The switch statement handles the different possible outcomes of the game.

@@ -14,7 +14,8 @@ namespace Gameplay
 	class GameplayController
 	{
 	private:
-		const float max_duration = 60.f;
+		const float max_duration = 201.f;
+		const float game_over_time = 11.f;
 		float remaining_time;
 
 		GameResult game_result;
@@ -35,6 +36,7 @@ namespace Gameplay
 
 		float getRemainingTime();
 
+		void beginGameOverTimer();
 		void endGame(GameResult result);
 
 		void reset();
