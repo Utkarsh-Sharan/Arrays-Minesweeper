@@ -27,6 +27,7 @@ namespace Gameplay
 		void gameWon();
 		void gameLost();
 		void beginGameOverTimer();
+		bool isTimeOver();
 		void showCredits();
 
 	public:
