@@ -40,6 +40,8 @@ namespace Gameplay
 	void GameplayController::reset()
 	{
 		remaining_time = max_duration;
+		game_result = GameResult::NONE;
+
 		ServiceLocator::getInstance()->getBoardService()->resetBoard();
 	}
 

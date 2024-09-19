@@ -4,12 +4,20 @@
 
 namespace Gameplay
 {
+	enum class GameResult
+	{
+		NONE,
+		WON,
+		LOST
+	};
+
 	class GameplayController
 	{
 	private:
 		const float max_duration = 60.f;
 		float remaining_time;
 
+		GameResult game_result;
 		Board::BoardController* board_controller;
 
 		void updateRemainingTime();
