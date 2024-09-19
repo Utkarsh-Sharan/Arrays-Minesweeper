@@ -80,6 +80,22 @@ namespace Gameplay
 			}
 		}
 
+		void BoardController::openAllCells()
+		{
+			if (board_state == BoardState::FIRST_CELL)
+			{
+				populateBoard(sf::Vector2i(0, 0));
+			}
+
+			for (int a = 0; a < number_of_rows; ++a)
+			{
+				for (int b = 0; b < number_of_columns; ++b)
+				{
+					board[a][b]->openCell();
+				}
+			}
+		}
+
 		void BoardController::processCellInput(Cell::CellController* cell_controller, UI::UIElement::ButtonType button_type)
 		{
 			switch (button_type)
