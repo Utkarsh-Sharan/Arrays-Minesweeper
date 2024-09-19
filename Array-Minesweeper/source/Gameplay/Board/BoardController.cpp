@@ -125,6 +125,16 @@ namespace Gameplay
 			return mines_count - flagged_cells;
 		}
 
+		BoardState BoardController::getBoardState()
+		{
+			return board_state;
+		}
+
+		void BoardController::setBoardState(BoardState state)
+		{
+			board_state = state;
+		}
+
 		void BoardController::destroy()
 		{
 			deleteBoard();
@@ -150,6 +160,8 @@ namespace Gameplay
 		void BoardController::reset()
 		{
 			flagged_cells = 0;
+			board_state = BoardState::FIRST_CELL;
+
 			resetBoard();
 		}
 

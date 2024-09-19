@@ -11,6 +11,13 @@ namespace Gameplay
 	{
 		class BoardView;
 
+		enum class BoardState
+		{
+			FIRST_CELL,       // The state when the player opens first cell.
+			PLAYING,          // The game is in progress.
+			COMPLETED,		  // The game is over.
+		};
+
 		class BoardController
 		{
 		public:
@@ -29,11 +36,15 @@ namespace Gameplay
 
 			int getMinesCount();
 
+			BoardState getBoardState();
+			void setBoardState(BoardState state);
+
 			void reset();
 
 		private:
 			int flagged_cells = 0;
 
+			BoardState board_state;
 			BoardView* board_view;
 			Cell::CellController* board[number_of_rows][number_of_columns];
 
