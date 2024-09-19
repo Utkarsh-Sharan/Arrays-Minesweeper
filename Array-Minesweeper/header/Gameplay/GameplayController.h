@@ -1,18 +1,33 @@
 #pragma once
 
+#include "Gameplay/Board/BoardService.h"
 #include "Gameplay/Board/BoardController.h"
 
 namespace Gameplay
 {
+	enum class GameResult
+	{
+		NONE,
+		WON,
+		LOST
+	};
+
 	class GameplayController
 	{
 	private:
-		const float max_duration = 60.f;
+		const float max_duration = 201.f;
+		const float game_over_time = 11.f;
 		float remaining_time;
 
-		Board::BoardController* board_controller;
+		GameResult game_result;
+		Board::BoardService* board_service;
 
 		void updateRemainingTime();
+
+		void gameWon();
+		void gameLost();
+		void beginGameOverTimer();
+		void showCredits();
 
 	public:
 		GameplayController();
@@ -23,6 +38,8 @@ namespace Gameplay
 		void render();
 
 		float getRemainingTime();
+
+		void endGame(GameResult result);
 
 		void reset();
 	};

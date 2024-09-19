@@ -1,5 +1,4 @@
 #include "Gameplay/GameplayService.h"
-#include "Gameplay/GameplayController.h"
 #include "Global/ServiceLocator.h"
 
 namespace Gameplay
@@ -46,5 +45,10 @@ namespace Gameplay
 	int GameplayService::getMinesCount()
 	{
 		return ServiceLocator::getInstance()->getBoardService()->getMinesCount();
+	}
+
+	void GameplayService::endGame(GameResult result)
+	{
+		gameplay_controller->endGame(result);
 	}
 }
