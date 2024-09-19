@@ -27,6 +27,9 @@ namespace Gameplay
 	void GameplayController::update()
 	{
 		updateRemainingTime();
+
+		if (isTimeOver())
+			endGame(GameResult::LOST);
 	}
 
 	void GameplayController::updateRemainingTime()
@@ -62,8 +65,6 @@ namespace Gameplay
 			beginGameOverTimer();
 			ServiceLocator::getInstance()->getBoardService()->showBoard();
 			ServiceLocator::getInstance()->getBoardService()->setBoardState(BoardState::COMPLETED);
-			//board_service->showBoard();
-			//board_service->setBoardState(BoardState::COMPLETED);
 		}
 		else
 		{
@@ -74,6 +75,11 @@ namespace Gameplay
 	void GameplayController::beginGameOverTimer()
 	{
 		remaining_time = game_over_time;
+	}
+
+	bool GameplayController::isTimeOver() 
+	{ 
+		return (remaining_time <= 1);
 	}
 
 	void GameplayController::showCredits() 
