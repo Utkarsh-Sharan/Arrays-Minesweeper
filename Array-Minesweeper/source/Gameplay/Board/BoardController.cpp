@@ -12,7 +12,7 @@ namespace Gameplay
 		using namespace Global;
 		using namespace Sound;
 
-		BoardController::BoardController()
+		BoardController::BoardController() : random_engine(random_device()) // Seeded random engine with random device
 		{
 			board_view = new BoardView(this);
 			createBoard();
@@ -98,6 +98,12 @@ namespace Gameplay
 		{
 			if (board[cell_position.x][cell_position.y]->canOpenCell())
 			{
+				if (board_state == BoardState::FIRST_CELL)
+				{
+					populateBoard(cell_position);
+					board_state = BoardState::PLAYING;
+				}
+
 				board[cell_position.x][cell_position.y]->openCell();
 			}
 		}
@@ -118,6 +124,32 @@ namespace Gameplay
 			}
 
 			board[cell_position.x][cell_position.y]->flagCell();
+		}
+
+		void BoardController::populateBoard(sf::Vector2i cell_position)
+		{
+			populateMines(cell_position);
+			//populateCells();  //Yet to implement
+		}
+
+		void BoardController::populateMines(sf::Vector2i cell_position)
+		{
+			// Co-ordinate distribution i.e. selecting random position for mines.
+			std::uniform_int_distribution<int> x_distribution(0, number_of_columns - 1);
+			std::uniform_int_distribution<int> y_distribution(0, number_of_rows - 1);
+
+			//Generate random int values for both distributions created above.
+			for (int a = 0; a < mines_count; a++)
+			{
+				int i = static_cast<int>(x_distribution(random_engine));
+				int j = static_cast<int>(y_distribution(random_engine));
+
+				// If the cell is already a mine or it's the same cell that the player wants to open --> Run the loop an extra time
+				if (board[i][j]->getCellValue() == CellValue::MINE || (cell_position.x == i && cell_position.y == j)) 
+					a--; //a-- runs a loop 1 extra time
+				else 
+					board[i][j]->setCellValue(CellValue::MINE);
+			}
 		}
 
 		int BoardController::getMinesCount()

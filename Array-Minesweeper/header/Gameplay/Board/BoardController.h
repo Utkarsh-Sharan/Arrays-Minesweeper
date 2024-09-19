@@ -4,6 +4,7 @@
 #include "UI/UIElement/ButtonView.h"
 
 #include <sfml/Graphics.hpp>
+#include <random>
 
 namespace Gameplay
 {
@@ -44,6 +45,11 @@ namespace Gameplay
 		private:
 			int flagged_cells = 0;
 
+			// To generate random values.
+			std::default_random_engine random_engine;
+			// To give random seed to generator.
+			std::random_device random_device;
+
 			BoardState board_state;
 			BoardView* board_view;
 			Cell::CellController* board[number_of_rows][number_of_columns];
@@ -53,6 +59,9 @@ namespace Gameplay
 
 			void openCell(sf::Vector2i cell_position);
 			void flagCell(sf::Vector2i cell_position);
+
+			void populateBoard(sf::Vector2i cell_position);
+			void populateMines(sf::Vector2i cell_position);
 
 			void destroy();
 			void deleteBoard();
