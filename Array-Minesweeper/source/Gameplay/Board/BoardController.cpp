@@ -84,7 +84,6 @@ namespace Gameplay
 
 		void BoardController::showBoard()
 		{
-
 			switch (getBoardState())
 			{
 			case BoardState::FIRST_CELL:
@@ -94,6 +93,9 @@ namespace Gameplay
 
 			case BoardState::PLAYING:
 				openAllCells();
+				break;
+
+			case BoardState::COMPLETED:
 				break;
 
 			default:

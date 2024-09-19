@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Gameplay/GameplayController.h"
+
 namespace Gameplay
 {
 	class GameplayController;

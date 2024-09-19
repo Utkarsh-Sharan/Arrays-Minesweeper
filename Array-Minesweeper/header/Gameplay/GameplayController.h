@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Gameplay/Board/BoardService.h"
 #include "Gameplay/Board/BoardController.h"
 
 namespace Gameplay
@@ -19,12 +20,14 @@ namespace Gameplay
 		float remaining_time;
 
 		GameResult game_result;
-		Board::BoardController* board_controller;
+		Board::BoardService* board_service;
 
 		void updateRemainingTime();
 
 		void gameWon();
 		void gameLost();
+		void beginGameOverTimer();
+		void showCredits();
 
 	public:
 		GameplayController();
@@ -36,7 +39,6 @@ namespace Gameplay
 
 		float getRemainingTime();
 
-		void beginGameOverTimer();
 		void endGame(GameResult result);
 
 		void reset();

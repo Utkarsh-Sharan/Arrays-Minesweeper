@@ -20,10 +20,10 @@ namespace Sound
 	void SoundService::loadSoundFromFile()
 	{
 		if (!buffer_button_click.loadFromFile(Config::button_click_sound_path))
-			printf("Error loading background music file");
+			printf("Error loading button click sound file");
 
 		if (!buffer_explosion.loadFromFile(Config::explosion_sound_path))
-			printf("Error loading background music file");
+			printf("Error loading explosion sound file");
 	}
 
 	void SoundService::playSound(SoundType soundType)

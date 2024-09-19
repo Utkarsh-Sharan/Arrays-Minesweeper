@@ -1,5 +1,4 @@
 #include "Gameplay/Board/BoardService.h"
-#include "Gameplay/Board/BoardController.h"
 
 namespace Gameplay
 {
@@ -42,6 +41,19 @@ namespace Gameplay
 		int BoardService::getMinesCount()
 		{
 			return board_controller->getMinesCount();
+		}
+
+		void BoardService::showBoard()
+		{
+			if (board_controller == nullptr)
+				printf("controller null");
+			else
+				board_controller->showBoard();
+		}
+
+		void BoardService::setBoardState(BoardState state)
+		{
+			board_controller->setBoardState(state);
 		}
 
 		void BoardService::resetBoard()
