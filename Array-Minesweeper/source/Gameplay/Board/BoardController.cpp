@@ -129,7 +129,7 @@ namespace Gameplay
 		void BoardController::populateBoard(sf::Vector2i cell_position)
 		{
 			populateMines(cell_position);
-			//populateCells();  //Yet to implement
+			populateCells();
 		}
 
 		void BoardController::populateMines(sf::Vector2i cell_position)
@@ -150,6 +150,47 @@ namespace Gameplay
 				else 
 					board[i][j]->setCellValue(CellValue::MINE);
 			}
+		}
+
+		void BoardController::populateCells()
+		{
+			for (int a = 0; a < number_of_rows; a++)
+			{
+				for (int b = 0; b < number_of_columns; b++)
+				{
+					if (board[a][b]->getCellValue() != CellValue::MINE)
+					{
+						CellValue value = static_cast<CellValue>(countMinesAround(sf::Vector2i(a, b)));
+						board[a][b]->setCellValue(value);
+					}
+				}
+			}
+		}
+
+		int BoardController::countMinesAround(sf::Vector2i cell_position)
+		{
+			int mines_around = 0;
+
+			for (int a = -1; a < 2; a++)
+			{
+				for (int b = -1; b < 2; b++)
+				{
+					//If its the current cell, or cell position is not valid, then the loop will skip once
+					if ((a == 0 && b == 0) || !isValidCellPosition(sf::Vector2i(cell_position.x + a, cell_position.y + b))) 
+						continue;
+
+					if (board[a + cell_position.x][b + cell_position.y]->getCellValue() == CellValue::MINE) 
+						mines_around++;
+				}
+			}
+
+			return mines_around;
+		}
+
+		bool BoardController::isValidCellPosition(sf::Vector2i cell_position)
+		{
+			// if position is withing the bounds of the array, then position is valid
+			return (cell_position.x >= 0 && cell_position.y >= 0 && cell_position.x < number_of_columns && cell_position.y < number_of_rows);
 		}
 
 		int BoardController::getMinesCount()
