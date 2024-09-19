@@ -36,6 +36,7 @@ namespace Gameplay
 			void processCellInput(Cell::CellController* cell_controller, UI::UIElement::ButtonType button_type);
 
 			void showBoard();
+			void flagAllMines();
 
 			int getMinesCount();
 
@@ -61,6 +62,7 @@ namespace Gameplay
 
 			void openCell(sf::Vector2i cell_position);
 			void flagCell(sf::Vector2i cell_position);
+			bool areAllCellOpen();
 
 			void populateBoard(sf::Vector2i cell_position);
 			void populateMines(sf::Vector2i cell_position);

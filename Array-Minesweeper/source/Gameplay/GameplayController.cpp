@@ -29,7 +29,12 @@ namespace Gameplay
 		updateRemainingTime();
 
 		if (isTimeOver())
-			endGame(GameResult::LOST);
+		{
+			if(game_result == GameResult::LOST)
+				endGame(GameResult::LOST);
+			else if(game_result == GameResult::WON)
+				endGame(GameResult::WON);
+		}
 	}
 
 	void GameplayController::updateRemainingTime()
@@ -54,7 +59,18 @@ namespace Gameplay
 
 	void GameplayController::gameWon()
 	{
-		// Implement game won specific logic here.
+		if (game_result == GameResult::NONE)
+		{
+			game_result = GameResult::WON;
+			beginGameOverTimer();
+			ServiceLocator::getInstance()->getBoardService()->flagAllMines();
+			ServiceLocator::getInstance()->getBoardService()->setBoardState(BoardState::COMPLETED);
+			//ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::GAME_WON);
+		}
+		else
+		{
+			showCredits();
+		}
 	}
 
 	void GameplayController::gameLost()

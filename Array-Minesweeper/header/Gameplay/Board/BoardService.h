@@ -31,6 +31,7 @@ namespace Gameplay
 			int getMinesCount();
 
 			void showBoard();
+			void flagAllMines();
 			void setBoardState(BoardState state);
 
 			void resetBoard();
