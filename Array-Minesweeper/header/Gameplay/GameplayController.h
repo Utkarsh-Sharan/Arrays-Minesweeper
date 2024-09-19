@@ -22,6 +22,9 @@ namespace Gameplay
 
 		void updateRemainingTime();
 
+		void gameWon();
+		void gameLost();
+
 	public:
 		GameplayController();
 		~GameplayController();
@@ -31,6 +34,8 @@ namespace Gameplay
 		void render();
 
 		float getRemainingTime();
+
+		void endGame(GameResult result);
 
 		void reset();
 	};

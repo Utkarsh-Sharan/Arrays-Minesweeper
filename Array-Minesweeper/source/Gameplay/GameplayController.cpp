@@ -32,6 +32,31 @@ namespace Gameplay
 		remaining_time -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 	}
 
+	void GameplayController::endGame(GameResult result)
+	{
+		// The switch statement handles the different possible outcomes of the game.
+		switch (result)
+		{
+		case GameResult::WON:
+			gameWon();
+			break;
+
+		case GameResult::LOST:
+			gameLost();
+			break;
+		}
+	}
+
+	void GameplayController::gameWon()
+	{
+		// Implement game won specific logic here.
+	}
+
+	void GameplayController::gameLost()
+	{
+		// Implement game lost specific logic here.
+	}
+
 	void GameplayController::render()
 	{
 
