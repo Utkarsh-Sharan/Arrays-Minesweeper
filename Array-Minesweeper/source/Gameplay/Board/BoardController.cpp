@@ -2,6 +2,7 @@
 #include "Gameplay/Board/BoardView.h"
 
 #include "Gameplay/Cell/CellModel.h"
+#include "Gameplay/GameplayController.h"
 #include "Global/ServiceLocator.h"
 
 namespace Gameplay
@@ -11,6 +12,7 @@ namespace Gameplay
 		using namespace Cell;
 		using namespace Global;
 		using namespace Sound;
+		using namespace Gameplay;
 
 		BoardController::BoardController() : random_engine(random_device()) // Seeded random engine with random device
 		{
@@ -134,7 +136,7 @@ namespace Gameplay
 				break;
 
 			case::Gameplay::Cell::CellValue::MINE:
-				//processMineCell(cell_position); Yet to implement
+				processMineCell(cell_position);
 				break;
 
 			default:
@@ -147,6 +149,12 @@ namespace Gameplay
 		{
 			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
 			openEmptyCells(cell_position);
+		}
+
+		void BoardController::processMineCell(sf::Vector2i cell_position)
+		{
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION);
+			ServiceLocator::getInstance()->getGameplayService()->endGame(GameResult::LOST);
 		}
 
 		void BoardController::openEmptyCells(sf::Vector2i cell_position)
